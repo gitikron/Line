@@ -48,7 +48,7 @@ app.get("/stock/:token/:msg/", function(req, res) {
 
 app.get("/login/:user", function(req, res) {
     const user = req.params.user;
-    axios.get(`${DB_URL}/auth/${user}.json`).then((result) => {
+    axios.get(`${DB_URL}/auth/${this.auth.user}.json`).then((result) => {
         res.send(result.data);
     }).catch((err) => {
         res.send(null);

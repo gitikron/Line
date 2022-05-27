@@ -4,8 +4,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const request = require('request');
 const PORT = process.env.PORT || 3000
-const axios = require('axios');
-const DB_URL = "https://databasedarlene-default-rtdb.asia-southeast1.firebasedatabase.app"
 app.get("/", function(req, res) {
     res.send('ss');
 });
@@ -46,9 +44,9 @@ app.get("/stock/:token/:msg/", function(req, res) {
 });
 
 
-app.get("/login/:user", function(req, res) {
+app.get("/stock/login/:user", function(req, res) {
     const user = req.params.user;
-    axios.get(`${DB_URL}/auth/${user}.json`).then((result) => {
+    axios.get(`${DB_URL}/auth/${this.auth.user}.json`).then((result) => {
         res.send(result.data);
     }).catch((err) => {
         res.send(null);
